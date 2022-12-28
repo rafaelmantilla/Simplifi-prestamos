@@ -78,16 +78,87 @@
             </div>
         </div>
     </div>
-  
-       <!-- una imagen hasta que sepamos como funciona todo javascript--> 
     </section>
-    <img src="./Imagenes/simulador.PNG" alt="" class="img-fluid d-block mx-auto">
-
+    <div class="container-fluid mt-5">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Empecemos!</h1>
+            <!-- agrego un formulario armado con bootstrap-->
+            <section class="formulario mt-5" id = "formulario1">
+              <div class="row">
+                 <div class="col-md-12">
+                     <form class="row g-3">
+                          <div class="col-md-4">
+                           <label for="inputEmail4" class="form-label">Nombre</label>
+                           <input type="text" class="form-control" id="inputname">
+                         </div>
+                         <div class="col-md-4">
+                             <label for="inputEmail4" class="form-label">Apellido</label>
+                             <input type="text" class="form-control" id="inputlastname">
+                           </div>
+                           <div class="col-md-4">
+                              <label for="inputEmail4" class="form-label">edad</label>
+                              <input type="number" class="form-control" id="inputage">
+                            </div>
+                          <div class="col-md-6">
+                              <label for="inputEmail4" class="form-label">DNI</label>
+                              <input type="text" class="form-control" id="inputid">
+                          </div>
+                         <div class="col-md-6">
+                             <label for="inputEmail" class="form-label">Email</label>
+                             <input type="email" class="form-control" id="inputEmail">
+                         </div>
+                         <div class="col-md-6">
+                          <label for="inputAddress2" class="form-label">Úlitmo Sueldo Neto</label>
+                          <input type="text" class="form-control" id="inputsalary" placeholder="Ej: 150000">
+                        </div>
+                         <div class="col-md-6">
+                           <label for="inputAddress2" class="form-label">Cuanto dinero necesitas?</label>
+                           <input type="text" class="form-control" id="inputloan" placeholder="Ej: 300000">
+                         </div>
+                         <div class="col-md-6">
+                           <label for="inputtimepay" class="form-label">De que forma desea devolverlo?</label>
+                           <select id="inputtimepay" class="form-select">
+                             <option selected>Selecciona...</option>
+                             <option>Pago dario</option>
+                             <option>Quincena</option>
+                             <option>Mensual</option>
+                           </select>
+                         </div>
+                         <div class="col-md-6">
+                             <label for="inputtime" class="form-label">En cuanto tiempo desea devolverlo?</label>
+                             <input type="number" class="form-control" id="inputtime" placeholder="Indicar el número de meses. Ej: 12 ">
+                           </div>
+                         <!-- es un boton con cajita de check. vemos si incluirlo o no más adelante
+                          <div class="col-12">
+                           <div class="form-check">
+                             <input class="form-check-input" type="checkbox" id="gridCheck">
+                             <label class="form-check-label" for="gridCheck">
+                               Quiero una DEMO
+                             </label>
+                           </div>
+                         </div>
+                         -->
+                         <div class="col-12">
+                           <button type="submit" class="btn btn-primary">Simular</button>
+                         </div>
+                       </form>
+                 </div> 
+                 <!--aca termina el formulario-->
+        </div>      
+      </div>
+    </div>
     <section>
-    
+    <div class="container-fluid mt-5">
+      <div class="row">
+        <div class="col-md-12">
+          <div id="infosimulador">
+
+          </div>
+        </div>
+      </div>  
+    </div>       
     </section>
-
-
     <section>
         <div class="container-fluid">
             <div class="row mt-5">

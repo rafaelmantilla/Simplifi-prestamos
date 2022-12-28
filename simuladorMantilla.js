@@ -1,4 +1,5 @@
-alert ("Bienvenido al Simulador de prestamos");
+
+/*alert ("Bienvenido al Simulador de prestamos");
 alert ("Empecemos!")
 
 let nombre = (prompt("Ingrese su nombre"));
@@ -96,9 +97,114 @@ if (mensaje_cierre == "si" || mensaje_cierre == "SI") {
       alert ("Muchas gracias por su interés, vuelva pronto.")
     
 }
+ */
 
-/* Realice un filtrado del array que arme más arriba, todavía no lo utilizo en mi html. Funciona ok con console.log */
+//-----
+
+/* Realice un filtrado del array que arme más arriba, todavía no lo utilizo en mi html. Funciona ok con console.log 
 
 const filtrado = total_productos.find((p)=> p.ID === 300);
 
-console.log(filtrado)
+console.log(filtrado)*/
+
+//hasta aca es la entrega anterior dejamos cómo backup
+
+let nombre = document.querySelector("#inputname");
+let Apellido = document.querySelector("#inputlastname");
+let Edad = document.querySelector("#inputage");
+let dni = document.querySelector("#inputid");
+let correo = document.querySelector("#inputEmail");
+let Sueldo = document.querySelector("#inputsalary");
+let prestamo = document.querySelector("#inputloan");
+let forma_de_pago = document.querySelector("#inputtimepay");
+let tiempo_de_devolucion = document.querySelector("#inputtime");
+let TNA1 = 150;
+let TNA2 = 180;
+let TNA3 = 200;
+
+
+nombre.addEventListener("input", function()
+{
+    if(nombre.value === ""){
+        alert ("Campo obligatorio")
+    }
+    const nombre_json = JSON.stringify(nombre.value)
+
+console.log(nombre_json)
+
+localStorage.setItem("Nombre", nombre_json)
+})
+
+Edad.addEventListener("blur",(e)=> {
+    if(Edad.value < "18"){
+        alert ("Para continuar debe ser mayor de edad")
+    }
+    if(Edad.value > "80"){
+        alert ("Lamentablemente por su edad no es posible continuar")
+    }
+})
+
+Sueldo.addEventListener("blur", function()
+{
+  prestamo.addEventListener("blur", function() {
+    
+    if((prestamo.value)>(Sueldo.value*3)){
+        alert (`Muchas gracias ${nombre.value}, no es posible otorgarle el importe solicitado. Por favor intente nuevamente con un importe menor` )
+    }
+  })
+    
+})
+
+
+
+let formulario = document.querySelector("#formulario1")
+let infosimulador = document.querySelector("#infosimulador")
+
+const mostrarinfo = formulario.addEventListener("submit", function (e) {
+    e.preventDefault();
+    infosimulador.innerHTML=`
+    <div class="alert alert-warning" role="alert">
+    <h1> Simulador: </h1>
+    <h3> Muchas gracias ${nombre.value}, en breve te enviaremos a tu correo ${correo.value} el detalle de cómo quedaría tu prestamos soliciitado.</h3>
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6">
+			<p>
+				Importe solicitado:
+			</p>
+		</div>
+		<div class="col-md-6">
+			<p>
+				${prestamo.value}
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+        <p>
+			Forma de Pago:
+		</p>
+		</div>
+		<div class="col-md-6">
+            <p>
+				${forma_de_pago.value}
+			</p>
+		</div>
+	</div>
+    <div class="row">
+		<div class="col-md-6">
+        <p>
+			Plazo de devolución
+		</p>
+		</div>
+		<div class="col-md-6">
+            <p>
+				${tiempo_de_devolucion.value}
+			</p>
+		</div>
+	</div>
+	</div>
+</div>
+</div>
+    `
+})
