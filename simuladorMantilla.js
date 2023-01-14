@@ -123,24 +123,24 @@ let TNA2 = 180;
 let TNA3 = 200;
 
 
-nombre.addEventListener("input", function()
+nombre.addEventListener("blur", function()
 {
     if(nombre.value === ""){
-        alert ("Campo obligatorio")
+        swal("Campo obligatorio");
     }
     const nombre_json = JSON.stringify(nombre.value)
 
-console.log(nombre_json)
+//console.log(nombre_json)
 
 localStorage.setItem("Nombre", nombre_json)
 })
 
 Edad.addEventListener("blur",(e)=> {
     if(Edad.value < "18"){
-        alert ("Para continuar debe ser mayor de edad")
+        swal("Atención!", "...para poder continuar debe ser mayor de edad!","error");
     }
     if(Edad.value > "80"){
-        alert ("Lamentablemente por su edad no es posible continuar")
+        swal ("Lo sentimos!", "... lamentablemente por su edad no es posible continuar","error");
     }
 })
 
@@ -149,7 +149,7 @@ Sueldo.addEventListener("blur", function()
   prestamo.addEventListener("blur", function() {
     
     if((prestamo.value)>(Sueldo.value*3)){
-        alert (`Muchas gracias ${nombre.value}, no es posible otorgarle el importe solicitado. Por favor intente nuevamente con un importe menor` )
+        swal (`Muchas gracias ${nombre.value}, no es posible otorgarle el importe solicitado. Por favor intente nuevamente con un importe menor`)
     }
   })
     
@@ -163,8 +163,7 @@ let infosimulador = document.querySelector("#infosimulador")
 const mostrarinfo = formulario.addEventListener("submit", function (e) {
     e.preventDefault();
     infosimulador.innerHTML=`
-    <div class="alert alert-warning" role="alert">
-    <h1> Simulador: </h1>
+    <div class="alert" role="alert">
     <h3> Muchas gracias ${nombre.value}, en breve te enviaremos a tu correo ${correo.value} el detalle de cómo quedaría tu prestamos soliciitado.</h3>
     <div class="container-fluid">
 	<div class="row">
@@ -206,5 +205,30 @@ const mostrarinfo = formulario.addEventListener("submit", function (e) {
 	</div>
 </div>
 </div>
+<button class="btn btn-primary" onclick="reset();">Volver a simular</button>
     `
+})
+function reset(){
+    location.reload();
+}
+
+const listausuarios = async ()=> {
+    const response = await fetch (`https://jsonplaceholder.typicode.com/users`);
+    const usuarios = await response.json ();
+
+    let tablebody = ``;
+    
+    usuarios.forEach((usuarios, index) => {
+        tablebody += `
+        <tr>
+            <td>${usuarios.id}</td>
+            <td>${usuarios.name}</td>
+            <td>${usuarios.email}</td>
+        </tr>`;
+    })
+    document.getElementById("tabla").innerHTML = tablebody;
+};
+
+window.addEventListener("load", function(){
+    listausuarios();
 })
